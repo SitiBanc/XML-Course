@@ -1,0 +1,15 @@
+<appointments>
+<?xml-stylesheet type="text/xsl" href=""?>
+	<appointment aid="">
+		<object oid="">
+			<oname/>
+			<address/>
+		</object>
+		<sales sid="">
+			<sname></sname>
+			<cellphone></cellphone>
+		</sales>
+		<date/>
+		<time/>
+	</appointment>
+</appointments>

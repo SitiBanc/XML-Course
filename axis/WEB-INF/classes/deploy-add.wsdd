@@ -1,0 +1,6 @@
+<deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+	<service name="AdditionService" provider="java:RPC"  style="wrapped" use="literal">
+		<parameter name="className" value="Addition" />
+		<parameter name="allowedMethods" value="*" />
+	</service>
+</deployment>

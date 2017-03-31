@@ -1,0 +1,19 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:group name="book_group">
+		<xs:sequence>
+			<xs:element name="title" type="xs:string"/>
+			<xs:element name="author" type="xs:string"/>
+			<xs:element name="price" type="xs:integer"/>
+			<xs:element name="year" type="xs:gYear"/>
+		</xs:sequence>
+	</xs:group>
+	
+	<xs:element name="book">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:group ref="book_group" minOccurs="1" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>

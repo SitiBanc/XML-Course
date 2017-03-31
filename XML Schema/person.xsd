@@ -1,0 +1,10 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:complexType name="person_type">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+			   <xs:attribute name="lang" type="xs:string" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="person" type="person_type"/>
+</xs:schema>

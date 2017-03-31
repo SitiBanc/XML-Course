@@ -1,0 +1,18 @@
+<!ELEMENT 出差申請單 (出差人,職稱,服務單位,相當官等,出差事由,預計出差期間,出差地點,搭乘,經費)>
+<!ELEMENT 出差人	(#PCDATA)>
+<!ELEMENT 職稱	(#PCDATA)>
+<!ELEMENT 服務單位	(#PCDATA)>
+<!ELEMENT 相當官等	EMPTY>
+<!ATTLIST 相當官等 等級 (簡任|委任|技工|兼任助理) #REQUIRED>
+<!ELEMENT 出差事由	(#PCDATA)>
+<!ELEMENT 預計出差期間	(起始,結束)>
+<!ELEMENT 起始	(年,月,日)>
+<!ELEMENT 年	(#PCDATA)>
+<!ELEMENT 月	(#PCDATA)>
+<!ELEMENT 日	(#PCDATA)>
+<!ELEMENT 結束	(年,月,日)>
+<!ELEMENT 出差地點	(#PCDATA)>
+<!ELEMENT 搭乘	(#PCDATA)>
+<!ATTLIST 搭乘 工具 (高鐵|飛機) #IMPLIED>
+<!ELEMENT 經費	(#PCDATA)>
+<!ATTLIST 經費 來源 (行政管理費|單位經費|建教合作|其他) #REQUIRED>

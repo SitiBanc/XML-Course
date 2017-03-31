@@ -1,0 +1,100 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:complexType name="證明申請">
+		<xs:sequence>
+			<xs:element name="申請表" type="申請表"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="申請表">
+		<xs:sequence>
+			<xs:element name="申請日期" type="xs:date"/>
+			<xs:element name="申請人" type="人"/>
+			<xs:element name="紀錄期間" type="inquired_period" nillable="true"/>
+			<!--設定為nillable，表示該元素內容可以為空(須於XML裡加入xsi:nil="true")-->
+			<xs:choice minOccurs="1" maxOccurs="1">
+				<xs:element name="代理人" type="人"/>
+				<xs:element name="利害關係人" type="利害關係人"/>
+			</xs:choice>
+			<xs:element name="申請用途" type="xs:string" />
+			<xs:element name="辦事處" type="xs:string" nillable="true"/>
+			<xs:element name="FAX" type="phonenumber" nillable="true"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="inquired_period">
+		<xs:simpleContent>
+			<xs:extension base="xs:gYear">
+				<xs:attribute name="範圍" type="period_range" use="required"/>
+				<!--若屬性值為"last"，則其內容為空-->
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	
+	<xs:simpleType name="period_range">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="to_date"/>
+			<xs:enumeration value="last"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:complexType name="人">
+		<xs:sequence>
+			<xs:element name="姓名" type="xs:string"/>
+			<xs:element name="性別" type="gender"/>
+			<xs:element name="生日" type="xs:date"/>
+			<xs:element name="國籍" type="xs:string"/>
+			<xs:element name="ID" type="IDtype"/>
+			<xs:element name="電話" type="phonenumber"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:simpleType name="gender">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="男|女"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="IDtype">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Z][0-9]{9}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="phonenumber">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="([0-9])+"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:complexType name="利害關係人">
+		<xs:complexContent>
+			<xs:extension base="人">
+				<xs:sequence>
+					<xs:element name="檢附文件" type="attached_doc"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="attached_doc">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="關係" type="relationshipType"/>
+				<!--若屬性值非"其他"，則其內容為空-->
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	
+	<xs:simpleType name="relationshipType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="訴訟"/>
+			<xs:enumeration value="稅務"/>
+			<xs:enumeration value="戶政"/>
+			<xs:enumeration value="兵役"/>
+			<xs:enumeration value="健保"/>
+			<xs:enumeration value="其他"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:element name="證明申請" type="證明申請"/>
+</xs:schema>

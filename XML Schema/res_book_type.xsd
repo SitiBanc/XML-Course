@@ -1,0 +1,35 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:complexType name="book_type">
+		<xs:sequence>
+			<xs:element name="title" type="xs:string"/>
+			<xs:element name="author" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="ext_book_type">
+		<xs:complexContent>
+			<xs:extension base="book_type">
+			<xs:sequence>
+				<xs:element name="price" type="xs:integer"/>
+				<xs:element name="year" type="xs:gYear"/>
+			</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="res_book_type">
+		<xs:complexContent>
+			<xs:restriction base="ext_book_type">
+				<xs:sequence>
+					<xs:element name="title" type="xs:string"/>
+					<xs:element name="author" type="xs:string"/>
+					<xs:element name="price" type="xs:integer"/>
+					<!--必須保留-->
+					<xs:element name="year" type="xs:gYear" fixed="2005"/>
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:element name="book" type="res_book_type"/>
+</xs:schema>

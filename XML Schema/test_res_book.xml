@@ -1,0 +1,6 @@
+<book xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="res_book_type.xsd">
+	<title>NCHU</title>
+	<author>MIS</author>
+	<price>200</price>
+	<year>2005</year>
+</book>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="Big5"?>
+<!-- 文件範例: Books.xml -->
+<!DOCTYPE library SYSTEM "Books.dtd">
+<library>
+  <book code="P716">
+    <title>PHP 5網頁設計範例教本</title>
+    <author>陳會安</author>
+    <price>600</price>
+    <year>2005</year>
+  </book>
+  <book code="P679">    
+    <title>JSP 2.0網頁設計範例教本</title>
+    <author>陳會安研究室</author>
+    <price>650</price>
+    <year>2004</year>
+  </book>
+</library>

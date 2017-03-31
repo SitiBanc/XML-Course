@@ -1,0 +1,7 @@
+<!DOCTYPE email SYSTEM "dtdtest.dtd">
+<email>
+	<to>test2@test.net</to>
+	<from>test1@test.net</from>
+	<subject>test</subject>
+	<body type="text">Testing</body>
+</email>

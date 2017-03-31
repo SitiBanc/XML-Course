@@ -1,0 +1,2 @@
+@echo off
+set CLASSPATH=.;d:\axis-1_4\lib\axis.jar;d:\axis-1_4\lib\saaj.jar;d:\axis-1_4\lib\commons-logging-1.0.4.jar;d:\axis-1_4\lib\commons-discovery-0.2.jar;d:\axis-1_4\lib\wsdl4j-1.5.1.jar;d:\tomcat\lib\servlet-api.jar;d:\axis-1_4\lib\jaxrpc.jar;d:\tomcat\lib\activation.jar;d:\tomcat\lib\mail.jar;d:\tomcat\lib\xmlsec.jar;

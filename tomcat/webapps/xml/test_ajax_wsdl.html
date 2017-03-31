@@ -1,0 +1,60 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf8">
+		<title>AJAX TEST (WSDL)</title>
+		<style type="text/css">
+		  .off { display: none }
+		  .on  { display: inline }
+		</style>
+	</head>
+
+	<body>
+		<h2 align=center>Test AJAX (WSDL)</h2>
+		<hr>
+
+		<script type="text/javascript" language="javascript">
+			// insert AJAX code here
+			var http_request = false;
+			if(window.XMLHttpRequest) { // Mozilla, Safari, ....
+				http_request = new XMLHttpRequest();
+			} else if(window.ActiveXObject) { // IE
+				try {
+					http_request = new ActiveXObject("Msxml2.XMLHTTP");
+				} catch (e) {
+					try {
+						http_request = new ActiveXObject("Microsoft.XMLHTTP");
+					} catch (e) {}
+				}
+			}
+				
+			http_request.onreadystatechange = function() { 
+				alertContents(http_request); 
+			};
+			url = 'http://127.0.0.1:8080/axis/services/AdditionService?method=addNumbers&in0=187&in1=32';
+			http_request.open('GET', url, true);
+			http_request.send(null);
+			
+			// 定義事件處理函數為 alterContents()
+			function alertContents(http_request) {
+				if (http_request.readyState == 4) {
+					if (http_request.status == 200) { 
+						var xmldoc = http_request.responseXML;
+						var nodes = xmldoc.getElementsByTagName('ns1:addNumbersReturn');
+						var current = document.text_area0;
+						document.getElementById("text_area1").innerHTML = "nodes.length = " + nodes.length;
+
+					for(var i=1; i<nodes.length; i++) {
+						tnode = document.createTextNode(nodes[i].data);
+						current.appendChild(tnode);
+					}
+				  } else {
+					alert('There was a problem with the request.');
+				  }
+				}
+			}
+		</script>
+		<div id="text_area0"/>
+		<hr>
+		<div id="text_area1"></div>
+	</body>
+</html>
